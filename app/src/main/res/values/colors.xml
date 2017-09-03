@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--pink card color (Start)-->
+    <color name="white_text_heading_ping">#FFFFFF</color>
+    <color name="white_color">#FFFFFF</color>
+    <color name="white_color_light">#0dedeaea</color>
+    <color name="black_color">#000000</color>
+    <color name="white_light">#f5f4f4</color>
+    <color name="black_text_heading_ping">#000000</color>
+    <color name="gray_text_heading_ping">#636363</color>
+    <color name="text_auth_name_pink">#FAD4E1</color>
+    <color name="blue_signup">#3f80dc</color>
+    <color name="facebook_blue">#3b5998</color>
+    <color name="twitter_blue">#55acee</color>
+    <color name="google_red">#cf3421</color>
+    <color name="bg_pink">#E93F7E</color>
+    <color name="bg_pink_dark">#cf004d</color>
+    <color name="bg_yellow">#ffa128</color>
+    <color name="bg_orange">#F27022</color>
+    <color name="bg_light_blue">#0090ff</color>
+    <color name="bg_light_perpl">#6951ac</color>
+    <color name="bg_light_perplish">#865eff</color>
+    <color name="bg_light_skin">#f4a351</color>
+    <color name="bg_light_green">#68ed5e</color>
+    <color name="bg_light_greenish">#11ef00</color>
+    <color name="bg_dark_green">#56bc4e</color>
+    <color name="bg_flag_safron">#FF9933</color>
+    <color name="bg_flag_green">#138808</color>
+    <color name="bg_light_orange">#fc6919</color>
+    <color name="bg_light_orangeish">#ff5900</color>
+    <color name="bg_light_yello">#ffed65</color>
+    <color name="bg_light_yellowish">#f3ff10</color>
+    <color name="bg_light_red">#FFFF6A65</color>
+    <color name="bg_light_redish">#FFF2241D</color>
+    <color name="fb_blue">#3b5998</color>
+
+
+    <color name="background_dark">#1380f4</color>
+    <color name="background_light">#96b5e2</color>
+    <color name="transparent">#003f80dc</color>
+    <color name="bg_app">#FF3DB5EA</color>
+    <!--<color name="background_light">#ffd2b48c</color>-->
+    <!--<color name="transparent">#00b8860b</color>-->
+    <!--pink card color (End)-->
+
+
+</resources>

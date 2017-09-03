@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_app">
+
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@drawable/ic_bg_six" />-->
+
+
+    <TextView
+        android:id="@+id/iv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="App Logo"
+        android:textColor="@color/white_color"
+        android:textSize="50sp" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_logo"
+        android:layout_marginTop="50dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_Logn_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edt_login_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:hint="User Mobile"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:textColor="@color/white_color" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/til_Logn_mobile"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/edt_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/white_color" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/til_password"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_bg"
+                android:paddingBottom="15dp"
+                android:paddingEnd="40dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingStart="40dp"
+                android:paddingTop="15dp"
+                android:text="Login"
+                android:textColor="@color/bg_app"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_newuser_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_login"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:text="New To Us! Signup Here"
+                android:textColor="@color/white_color"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_forget_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_newuser_register"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="5dp"
+                android:paddingEnd="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingStart="5dp"
+                android:text="Forget Password"
+                android:textColor="@color/white_color"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

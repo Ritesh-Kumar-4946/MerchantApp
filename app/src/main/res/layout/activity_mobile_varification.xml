@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_app">
+
+    <TextView
+        android:id="@+id/tv_mobile_varification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50sp"
+        android:text="Mobile Varification"
+        android:textColor="@color/white_color"
+        android:textSize="30sp" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_mobile_varification"
+        android:layout_marginTop="50dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edt_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:hint="Mobile"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:textColor="@color/white_color" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_varification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/til_mobile"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/edt_otp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:hint="OTP"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:textColor="@color/white_color" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/tv_get_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/til_varification"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_bg"
+                android:paddingBottom="15dp"
+                android:paddingEnd="40dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingStart="40dp"
+                android:paddingTop="15dp"
+                android:text="Varification"
+                android:textStyle="bold"
+                android:textColor="@color/bg_app"
+                android:textSize="20sp" />
+
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>
