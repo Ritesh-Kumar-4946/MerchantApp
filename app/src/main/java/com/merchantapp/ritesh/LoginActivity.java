@@ -304,6 +304,10 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+
+
+
+
     private void showDialog() {
         if (!pDialog.isShowing())
             pDialog.show();
