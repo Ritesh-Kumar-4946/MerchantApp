@@ -43,6 +43,8 @@
     <color name="background_light">#96b5e2</color>
     <color name="transparent">#003f80dc</color>
     <color name="bg_app">#FF3DB5EA</color>
+    <color name="main_color_dark">#01743F</color>
+    <color name="main_color">#008B4B</color>
     <!--<color name="background_light">#ffd2b48c</color>-->
     <!--<color name="transparent">#00b8860b</color>-->
     <!--pink card color (End)-->

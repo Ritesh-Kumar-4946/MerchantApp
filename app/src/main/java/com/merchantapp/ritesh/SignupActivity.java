@@ -16,6 +16,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
@@ -29,6 +35,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -92,6 +100,7 @@ public class SignupActivity extends AppCompatActivity {
     String
             Deviceid = "",
             Str_Get_Control_Status = "",
+            Str_MerchantID = "",
             Str_Get_StoreControl_Status = "",
             Str_Get_StoreControl_Message = "",
             Str_Get_Control_Message = "",
@@ -170,18 +179,24 @@ public class SignupActivity extends AppCompatActivity {
                 Str_Get_Persone_Pincode = Edt_pincode.getText().toString().trim();
 
                 Log.e(" Sign Up Fields data :", "\n"
-                        + "Str_Get_Mtsn_Categoryname :" + "" + Str_Get_Mtsn_Categoryname + "\n"
-                        + "Str_Get_Mtsn_StoreCategoryname :" + "" + Str_Get_Mtsn_StoreCategoryname + "\n"
-                        + "Str_Get_Business_Name :" + "" + Str_Get_Business_Name + "\n"
+                        + "CategoryID :" + "" + Str_Get_Mtsn_CategoryID + "\n"
+                        + "Category Name :" + "" + Str_Get_Mtsn_Categoryname + "\n"
+                        + "StoreCategory ID :" + "" + Str_Get_Mtsn_StoreCategoryID + "\n"
+                        + "StoreCategory Name :" + "" + Str_Get_Mtsn_StoreCategoryname + "\n"
+                        + "BusinessName :" + "" + Str_Get_Business_Name + "\n"
                         + "Str_Get_Persone_Name :" + "" + Str_Get_Persone_Name + "\n"
                         + "Str_Get_Persone_Mobile :" + "" + Str_Get_Persone_Mobile + "\n"
                         + "Str_Get_Persone_Email :" + "" + Str_Get_Persone_Email + "\n"
                         + "Str_Get_Persone_Address :" + "" + Str_Get_Persone_Address + "\n"
                         + "Str_Get_Persone_Password :" + "" + Str_Get_Persone_Password + "\n"
                         + "Deviceid :" + "" + Deviceid + "\n"
+                        + "Str_Get_Mtsn_StateID :" + "" + Str_Get_Mtsn_StateID + "\n"
+                        + "Str_Get_Mtsn_Statename :" + "" + Str_Get_Mtsn_Statename + "\n"
+                        + "Str_Get_Cityid :" + "" + Str_Get_Cityid + "\n"
+                        + "Str_Get_Cityname :" + "" + Str_Get_Cityname + "\n"
                         + "Str_Get_Persone_Pincode :" + "" + Str_Get_Persone_Pincode + "\n");
 
-                if (Str_Get_Mtsn_Categoryname.equals("")) {
+                if (Str_Get_Mtsn_Categoryname.equalsIgnoreCase("")) {
                     iserror = true;
                     Log.e(" Error :", "Ok");
                     v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
@@ -206,7 +221,7 @@ public class SignupActivity extends AppCompatActivity {
                     /**************** End Animation ****************/
 
                     Toast.makeText(getApplicationContext(),
-                            "Please Select Store Type", Toast.LENGTH_SHORT).show();
+                            "Please Select Store Category", Toast.LENGTH_SHORT).show();
 
                 } else if (Str_Get_Mtsn_StoreCategoryname.equalsIgnoreCase("")) {
                     iserror = true;
@@ -260,7 +275,7 @@ public class SignupActivity extends AppCompatActivity {
                             .playOn(Edt_cp_name);
                     /**************** End Animation ****************/
 
-                    Toast.makeText(getApplicationContext(), "Enter Persone Name",
+                    Toast.makeText(getApplicationContext(), "Enter Person Name",
                             Toast.LENGTH_SHORT).show();
 
 
@@ -292,7 +307,7 @@ public class SignupActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
 
 
-                } else if (Str_Get_Persone_Email.equals("")) {
+                } else if (Str_Get_Persone_Email.equalsIgnoreCase("")) {
                     iserror = true;
                     Log.e(" Error :", "Ok");
                     v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
@@ -334,7 +349,7 @@ public class SignupActivity extends AppCompatActivity {
                             "Enter Address", Toast.LENGTH_SHORT).show();
 
 
-                } else if (Str_Get_Persone_Password.equals("")) {
+                } else if (Str_Get_Persone_Password.equalsIgnoreCase("")) {
                     iserror = true;
                     Log.e(" Error :", "Ok");
                     v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
@@ -348,7 +363,7 @@ public class SignupActivity extends AppCompatActivity {
                             "Enter Password", Toast.LENGTH_SHORT).show();
 
 
-                }else if (Str_Get_Persone_Password.length() < 5) {
+                } else if (Str_Get_Persone_Password.length() < 5) {
                     iserror = true;
                     Log.e(" Error :", "Ok");
                     v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
@@ -376,7 +391,35 @@ public class SignupActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
 
 
-                } else if (Str_Get_Persone_Pincode.equals("")) {
+                } else if (Str_Get_Mtsn_StateID.equalsIgnoreCase("")) {
+                    iserror = true;
+                    Log.e(" Error :", "Ok");
+                    v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                    /**************** Start Animation ****************/
+                    YoYo.with(Techniques.Shake)
+                            .duration(700)
+                            .playOn(Mmtspn_state);
+                    /**************** End Animation ****************/
+
+                    Toast.makeText(getApplicationContext(), "Please select State",
+                            Toast.LENGTH_SHORT).show();
+
+
+                } else if (Str_Get_Cityid.equalsIgnoreCase("")) {
+                    iserror = true;
+                    Log.e(" Error :", "Ok");
+                    v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                    /**************** Start Animation ****************/
+                    YoYo.with(Techniques.Shake)
+                            .duration(700)
+                            .playOn(Mtspn_city);
+                    /**************** End Animation ****************/
+
+                    Toast.makeText(getApplicationContext(), "Please select State",
+                            Toast.LENGTH_SHORT).show();
+
+
+                } else if (Str_Get_Persone_Pincode.equalsIgnoreCase("")) {
                     iserror = true;
                     Log.e(" Error :", "Ok");
                     v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
@@ -396,7 +439,8 @@ public class SignupActivity extends AppCompatActivity {
                     v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 
                     Log.e("OK Valid :", "OOOO");
-                    Signup_Fast();
+                    userLogin();
+//                    Signup_Fast();
 
 
                 }
@@ -556,13 +600,20 @@ public class SignupActivity extends AppCompatActivity {
                 .addBodyParameter("Email", Str_Get_Persone_Email)
                 .addBodyParameter("Password", Str_Get_Persone_Password)
                 .addBodyParameter("Address", Str_Get_Persone_Address)
-                .addBodyParameter("CityId", Str_Get_Mtsn_CategoryID)
+                .addBodyParameter("CityId", Str_Get_Cityid)
+//                .addBodyParameter("City Name", Str_Get_Cityname)
                 .addBodyParameter("Pincode", Str_Get_Persone_Pincode)
-                .addBodyParameter("Longitude", "88888")
-                .addBodyParameter("Latitude", "88888")
+                .addBodyParameter("Longitude", "8888.00")
+                .addBodyParameter("Latitude", "8888.00")
                 .addBodyParameter("DeviceId", Deviceid)
-                .addBodyParameter("StoreCategory", Str_Get_Mtsn_StoreCategoryID)
-                .addBodyParameter("Category", "1")
+//                .addBodyParameter("StoreCategory", Str_Get_Mtsn_StoreCategoryID)
+//                .addBodyParameter("StoreCategory Name", Str_Get_Mtsn_StoreCategoryname)
+//                .addBodyParameter("CategoryID", Str_Get_Mtsn_CategoryID)
+//                .addBodyParameter("Category Name", Str_Get_Mtsn_Categoryname)
+//                .addBodyParameter("StateID", Str_Get_Mtsn_StateID)
+//                .addBodyParameter("StateName", Str_Get_Mtsn_Statename)
+//                .addBodyParameter("CityID", Str_Get_Cityid)
+//                .addBodyParameter("CityName", Str_Get_Cityname)
                 .setTag("Storelist")
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -574,7 +625,7 @@ public class SignupActivity extends AppCompatActivity {
                         Log.e("Response :", "" + responsee);
 
                         try {
-                            StoreCategory_typelist.add("Please select Category");
+
                             JSONObject jobjresponse = new JSONObject(String.valueOf(responsee));
                             Log.e("jobjresponse List:", "" + jobjresponse);
 
@@ -589,17 +640,34 @@ public class SignupActivity extends AppCompatActivity {
                                 Str_Get_Control_Message = jobjControl.getString("Message");
                                 Log.e("Str_Get_Control_Message :", "" + Str_Get_Control_Message);
 
-
+                                JSONObject jsonObjectData = jobjControl.getJSONObject("Data");
+                                Str_MerchantID = jsonObjectData.getString("MerchantId");
+                                Log.e("Str_MerchantID :", "" + Str_MerchantID);
                                 Log.e("SIgnup :", "GOOD");
 
+                                Appconstant.editor.putString("id", Str_MerchantID);
+                                Appconstant.editor.putString("email", Str_Get_Persone_Email);
+                                Appconstant.editor.putString("username", Str_Get_Persone_Name);
+                                Appconstant.editor.putString("mobile", Str_Get_Persone_Mobile);
+                                Appconstant.editor.putString("businessname", Str_Get_Business_Name);
+                                Appconstant.editor.putString("loginTest", "true");
+                                Appconstant.editor.commit();
+
+
                                 Toast.makeText(SignupActivity.this, "Signup Complete", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(SignupActivity.this, "Your ID is :" + Str_MerchantID, Toast.LENGTH_SHORT).show();
+
+                                if (Str_Get_Control_Status.equalsIgnoreCase("1")) {
+                                    Intent Screen = new Intent(getApplicationContext(), VarifyMobileActivity.class);
+                                    startActivity(Screen);
+                                    finish();
+                                }
+
 
                             } else {
                                 Log.e("SIgnup :", "ERROR");
                                 Toast.makeText(SignupActivity.this, "Signup Error", Toast.LENGTH_SHORT).show();
-//                                City_typelist.clear();
-//                                Mtspn_city.setEnabled(false);
-//                                Mtspn_city.setSelected(false);
+
                             }
 
 
@@ -619,6 +687,121 @@ public class SignupActivity extends AppCompatActivity {
                         Log.e("Error Response :", "" + error.toString());
                     }
                 });
+    }
+
+
+    private void userLogin() {
+
+        Log.e(" Sign Up Fields data :", "\n"
+                + "Str_Get_Persone_Name :" + "" + Str_Get_Persone_Name + "\n"
+                + "BusinessName :" + "" + Str_Get_Business_Name + "\n"
+                + "Str_Get_Persone_Mobile :" + "" + Str_Get_Persone_Mobile + "\n"
+                + "Str_Get_Persone_Email :" + "" + Str_Get_Persone_Email + "\n"
+                + "Str_Get_Persone_Address :" + "" + Str_Get_Persone_Address + "\n"
+                + "Str_Get_Persone_Password :" + "" + Str_Get_Persone_Password + "\n"
+                + "Deviceid :" + "" + Deviceid + "\n"
+                + "Str_Get_Cityid :" + "" + Str_Get_Cityid + "\n"
+                + "CategoryID :" + "" + Str_Get_Mtsn_CategoryID + "\n"
+                + "StoreCategory ID :" + "" + Str_Get_Mtsn_StoreCategoryID + "\n"
+                + "Str_Get_Persone_Pincode :" + "" + Str_Get_Persone_Pincode + "\n");
+
+
+        // Tag used to cancel the request
+        String tag_string_req = "req_registration";
+        pDialog.setMessage("Signup...");
+        showDialog();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, HttpUrlPath.urlPathMain + SIGNUP,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+//                        Toast.makeText(MainVolleyActivity.this,response,Toast.LENGTH_LONG).show();
+                        hideDialog();
+                        Log.e("Response :", "" + response);
+                        try {
+                            JSONObject jobjresponse = new JSONObject(String.valueOf(response));
+                            Log.e("jobjresponse List:", "" + jobjresponse);
+
+                            JSONObject jobjControl = jobjresponse.getJSONObject("Control");
+                            Str_Get_Control_Status = jobjControl.getString("Status");
+                            Str_Get_Control_Message = jobjControl.getString("Message");
+
+
+                            if (Str_Get_Control_Status.equalsIgnoreCase("1")) {
+
+                                Log.e("Str_Get_Control_Status is:", "1");
+
+                                Str_Get_Control_Message = jobjControl.getString("Message");
+                                Log.e("Str_Get_Control_Message :", "" + Str_Get_Control_Message);
+
+                                JSONObject jobjData = jobjresponse.getJSONObject("Data");
+                                Str_MerchantID = jobjData.getString("MerchantId");
+                                Log.e("Str_MerchantID :", "" + Str_MerchantID);
+                                Log.e("SIgnup :", "GOOD");
+
+                                Log.e("Value save in Sharedpre", "ok");
+                                Appconstant.editor.putString("id", Str_MerchantID);
+                                Appconstant.editor.putString("email", Str_Get_Persone_Email);
+                                Appconstant.editor.putString("username", Str_Get_Persone_Name);
+                                Appconstant.editor.putString("mobile", Str_Get_Persone_Mobile);
+                                Appconstant.editor.putString("businessname", Str_Get_Business_Name);
+                                Appconstant.editor.putString("signupOk", "SignupTrue");
+                                Appconstant.editor.putString("loginTest", "true");
+                                Appconstant.editor.commit();
+                                Toast.makeText(SignupActivity.this, "Signup Completed", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(SignupActivity.this, "Your ID is :" + Str_MerchantID.toString(), Toast.LENGTH_SHORT).show();
+
+
+                            } else {
+                                Toast.makeText(SignupActivity.this, "" + Str_Get_Control_Message, Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        if (Str_Get_Control_Status.equalsIgnoreCase("1")) {
+
+
+                            Intent Screen = new Intent(getApplicationContext(), VarifyMobileActivity.class);
+                            startActivity(Screen);
+                            finish();
+
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        hideDialog();
+                        Toast.makeText(SignupActivity.this, "Server error try again", Toast.LENGTH_LONG).show();
+                        Log.e("Error Response :", "" + error.toString());
+
+
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Name", Str_Get_Persone_Name);
+                params.put("BusinessName", Str_Get_Business_Name);
+                params.put("Mobile", Str_Get_Persone_Mobile);
+                params.put("Email", Str_Get_Persone_Email);
+                params.put("Password", Str_Get_Persone_Password);
+                params.put("Address", Str_Get_Persone_Address);
+                params.put("CityId", Str_Get_Cityid);
+                params.put("Pincode", Str_Get_Persone_Pincode);
+                params.put("Longitude", "2228.00");
+                params.put("Latitude", "2222.00");
+                params.put("DeviceId", Deviceid);
+                params.put("Category", Str_Get_Mtsn_CategoryID);
+                params.put("StoreCategory", Str_Get_Mtsn_StoreCategoryID);
+                return params;
+            }
+
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
 

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Go Chela</string>
+    <string name="dialog_banner_textview">Choose Image From</string>
+    <string name="dialog_banner_change_password_textview">Change Password</string>
+    <string name="dialog_camera_textview">Camera</string>
+    <string name="dialog_gallery_textview">Gallery</string>
+    <string name="dialog_cancel_textview">Cancel</string>
+    <string name="dialog_ok_textview">OK</string>
 </resources>

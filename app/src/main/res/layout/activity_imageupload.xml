@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_color">
+
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@drawable/ic_bg_six" />-->
+
+
+    <TextView
+        android:id="@+id/iv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Go Chela"
+        android:textColor="@color/bg_app"
+        android:textSize="50sp" />
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/rl_mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_logo"
+        android:layout_margin="10dp">
+
+
+        <ImageView
+            android:id="@+id/iv_upload_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:layout_heightPercent="60%"
+            app:layout_widthPercent="100%" />
+
+
+        <RelativeLayout
+            android:id="@+id/rl_upload_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/iv_upload_image">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/ic_picker_imagee" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tv_btn_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_upload_image"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_bg"
+            android:paddingBottom="15dp"
+            android:paddingEnd="40dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:paddingStart="40dp"
+            android:paddingTop="15dp"
+            android:text="Upload"
+            android:textColor="@color/white_color"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+    </android.support.percent.PercentRelativeLayout>
+
+
+</RelativeLayout>

@@ -6,12 +6,15 @@ android {
     defaultConfig {
         applicationId "com.merchantapp.ritesh"
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        useLibrary 'org.apache.http.legacy'   // multipart 01
     }
 
+    // multipart 02
+    /*this is needed for after adding 3 library in lib folder for multipart (Start)*/
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/NOTICE'
@@ -22,6 +25,11 @@ android {
         exclude 'META-INF/ECLIPSE_.RSA'
 
     }
+    // multipart 02
+    /*this is needed for after adding 3 library in lib folder for multipart (End)*/
+
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -78,5 +86,9 @@ dependencies {
     compile 'com.jaredrummler:material-spinner:1.1.0'   /// spinner used in business dashboard
     compile 'com.daimajia.easing:library:2.0@aar'    // tada animation for blank field 01
     compile 'com.daimajia.androidanimations:library:2.3@aar'   // tada animation for blank field 02
+    compile 'com.yalantis:ucrop:2.2.0'
+    //image picker during edit profile  01
+    compile 'com.github.jksiezni.permissive:permissive:0.2'
+    //image picker during edit profile  02
 
 }

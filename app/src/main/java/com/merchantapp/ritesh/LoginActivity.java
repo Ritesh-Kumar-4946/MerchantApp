@@ -57,7 +57,11 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog pDialog;
 
     String
+            Str_Get_Control_Status = "",
+            Str_Get_Control_Message = "",
             strPut_mobile = "",
+            Str_Get_MerchantId = "",
+            Str_Get_MerchantCode = "",
             StrGet_status = "",
             strPut_password = "";
 
@@ -202,74 +206,32 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject jobjresponse = new JSONObject(response);
                             Log.e("jobjresponse :", "" + jobjresponse);
                             Log.e("response :", "" + response);
+                            JSONObject jobjControl = jobjresponse.getJSONObject("Control");
+                            JSONObject jobjData = jobjresponse.getJSONObject("Data");
+                            Str_Get_Control_Status = jobjControl.getString("Status");
+                            Str_Get_Control_Message = jobjControl.getString("Message");
+                            if (Str_Get_Control_Status.equalsIgnoreCase("1")) {
+                                Log.e("Str_Get_Control_Status is:", "1");
+                                Toast.makeText(LoginActivity.this, "" + Str_Get_Control_Message, Toast.LENGTH_LONG).show();
 
-//                            StrGet_status = jobjresponse.getString("status");
-//                            StrGet_message = jobjresponse.getString("message");
-//                            Log.e("StrGet_message is:", "" + StrGet_message);
-//
-//                            if (StrGet_status.equalsIgnoreCase("1")) {
-//                                Log.e("StrGet_status is:", "1");
-//                                JSONObject jobjresult = jobjresponse.getJSONObject("result");
-//                                Log.e("jobjresult :", "" + jobjresult);
-//
-//                                StrGet_user_id = jobjresult.getString("id");
-//                                StrGet_user_name = jobjresult.getString("username");
-//                                StrGet_user_mobile = jobjresult.getString("mobile");
-//                                StrGet_user_email = jobjresult.getString("email");
-//                                StrGet_user_active_status = jobjresult.getString("status");
-//                                StrGet_business_status = jobjresult.getString("business_status");
-//                                StrGet_business_id = jobjresult.getString("business_id");
-//                                StrGet_home_address = jobjresult.getString("home_address");
-//                                StrGet_work_address = jobjresult.getString("work_address");
-//
-//                                Log.e("StrGet_status is:", "1");
-//                                Log.e("StrGet_user_id is:", "" + StrGet_user_id);
-//                                Log.e("StrGet_user_name is:", "" + StrGet_user_name);
-//                                Log.e("StrGet_user_mobile is:", "" + StrGet_user_mobile);
-//                                Log.e("StrGet_user_email is:", "" + StrGet_user_email);
-//                                Log.e("StrGet_user_active_status is:", "" + StrGet_user_active_status);
-//
-//                                Appconstant.editor.putString("id", StrGet_user_id);
-//                                Appconstant.editor.putString("email", StrGet_user_email);
-//                                Appconstant.editor.putString("username", StrGet_user_name);
-//                                Appconstant.editor.putString("mobile", StrGet_user_mobile);
-//                                Appconstant.editor.putString("loginTest", "true");
-//                                Appconstant.editor.commit();
-//
-//
-//                                if (!StrGet_business_id.equalsIgnoreCase("0")) {
-//                                    Log.e("StrGet_business_id is:", "" + StrGet_business_id);
-//                                } else {
-//                                    Log.e("StrGet_business_id is:", "" + "0");
-//                                }
-//
-//                                if (!StrGet_work_address.equalsIgnoreCase("")) {
-//                                    Log.e("StrGet_work_address is:", "" + StrGet_work_address);
-//                                } else {
-//                                    Log.e("StrGet_work_address is:", "" + "Not Found");
-//                                }
-//
-//                                if (!StrGet_home_address.equalsIgnoreCase("")) {
-//                                    Log.e("StrGet_home_address is:", "" + "Found So go to Get profile screen");
-//                                    Log.e("StrGet_home_address is:", "" + StrGet_home_address);
-//                                    Intent GoGetProfileScreen = new Intent(getApplicationContext(), ProfileGetActivity.class);
-//                                    startActivity(GoGetProfileScreen);
-//                                    finish();
-//                                } else {
-//                                    Log.e("StrGet_home_address is:", "" + "Not Found So go to create profile screen");
-//
-//                                    Intent GoGetProfileScreen = new Intent(getApplicationContext(), ProfileCreateActivity.class);
-//                                    startActivity(GoGetProfileScreen);
-//                                    finish();
-//                                }
-//
-//                            } else if (StrGet_status.equalsIgnoreCase("0")) {
-//                                Log.e("StrGet_status is:", "0");
-//                                Log.e("Login Detail Not Match :", "Error");
-//
-////                            Toast.makeText(LoginActivity.this, "User detail not found", Toast.LENGTH_LONG).show();
-//
-//                            }
+                                Str_Get_MerchantId = jobjData.getString("MerchantId");
+                                Str_Get_MerchantCode = jobjData.getString("MerchantCode");
+
+
+                                Log.e("Value save in Sharedpre", "ok");
+                                Appconstant.editor.putString("id", Str_Get_MerchantId);
+                                Appconstant.editor.putString("signupOk", "SignupTrue");
+                                Appconstant.editor.putString("loginTest", "true");
+                                Appconstant.editor.commit();
+
+
+                                Intent Screen = new Intent(getApplicationContext(), VarifyMobileActivity.class);
+                                startActivity(Screen);
+                                finish();
+                            } else {
+                                Log.e("Str_Get_Control_Status is:", "0");
+                                Toast.makeText(LoginActivity.this, "" + Str_Get_Control_Message, Toast.LENGTH_LONG).show();
+                            }
 
 
                         } catch (JSONException e) {
@@ -305,9 +267,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
-
-
     private void showDialog() {
         if (!pDialog.isShowing())
             pDialog.show();
@@ -319,4 +278,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

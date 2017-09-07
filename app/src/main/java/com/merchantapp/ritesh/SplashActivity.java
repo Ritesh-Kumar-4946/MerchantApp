@@ -10,6 +10,7 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 
 public class SplashActivity extends AppCompatActivity {
+    String SIgnupScreen = "", VarificationScreen = "", ImageuploadScreen = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +25,15 @@ public class SplashActivity extends AppCompatActivity {
         // check here if user is login or not
         Appconstant.str_login_test = Appconstant.sh.getString("loginTest", null);
 
+        SIgnupScreen = Appconstant.sh.getString("signupOk", null);
+        VarificationScreen = Appconstant.sh.getString("varificationOk", null);
+        ImageuploadScreen = Appconstant.sh.getString("imageuploadOk", null);
+
+
         if (getIntent().getBooleanExtra("EXIT", false)) {
             finish();
             return;
         }
-
-
-
 
 
         new Handler().postDelayed(new Runnable() {
@@ -42,8 +45,8 @@ public class SplashActivity extends AppCompatActivity {
                         && !Appconstant.str_login_test.toString().trim().equals("")) {
                     Log.e("Login detail found :", " Now Check Business Create Status");
 
-                    Intent Gologincreen = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(Gologincreen);
+                    Intent Screen = new Intent(getApplicationContext(), ImageUpload.class);
+                    startActivity(Screen);
                     finish();
 
                 }
@@ -60,8 +63,6 @@ public class SplashActivity extends AppCompatActivity {
                 }
 
 
-
-
                 Intent i = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(i);
                 finish();
@@ -69,9 +70,12 @@ public class SplashActivity extends AppCompatActivity {
         }, 2000);
 
 
-
     }
 
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

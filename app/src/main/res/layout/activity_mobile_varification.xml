@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_app">
+    android:background="@color/white_color">
 
     <TextView
         android:id="@+id/tv_mobile_varification"
@@ -11,7 +11,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50sp"
         android:text="Mobile Varification"
-        android:textColor="@color/white_color"
+        android:textColor="@color/bg_app"
         android:textSize="30sp" />
 
 
@@ -28,29 +28,22 @@
             android:layout_margin="10dp">
 
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/til_mobile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/edt_mobile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:digits="0123456789"
-                    android:hint="Mobile"
-                    android:inputType="number"
-                    android:maxLength="10"
-                    android:textColor="@color/white_color" />
-
-            </android.support.design.widget.TextInputLayout>
+            <TextView
+                android:id="@+id/tv_mobile_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:padding="10dp"
+                android:textColor="@color/bg_app"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/til_varification"
+                android:id="@+id/til_varify_otp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/til_mobile"
+                android:layout_below="@id/tv_mobile_number"
                 android:layout_marginTop="10dp">
 
                 <EditText
@@ -59,18 +52,20 @@
                     android:layout_height="wrap_content"
                     android:digits="0123456789"
                     android:hint="OTP"
-                    android:inputType="number"
-                    android:maxLength="10"
-                    android:textColor="@color/white_color" />
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:maxLength="8"
+                    android:textColor="@color/bg_app" />
 
             </android.support.design.widget.TextInputLayout>
 
 
             <TextView
-                android:id="@+id/tv_get_password"
+                android:id="@+id/tv_btn_varification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/til_varification"
+                android:layout_below="@id/til_varify_otp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
@@ -84,10 +79,9 @@
                 android:paddingStart="40dp"
                 android:paddingTop="15dp"
                 android:text="Varification"
-                android:textStyle="bold"
-                android:textColor="@color/bg_app"
-                android:textSize="20sp" />
-
+                android:textColor="@color/white_color"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
 
         </RelativeLayout>
