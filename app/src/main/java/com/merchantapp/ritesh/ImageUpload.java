@@ -43,6 +43,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.github.hujiaweibujidao.wava.Techniques;
+import com.github.hujiaweibujidao.wava.YoYo;
 import com.merchantapp.ritesh.ucropImagepicker.PickerBuilder;
 
 import org.json.JSONException;
@@ -115,7 +117,12 @@ public class ImageUpload extends AppCompatActivity {
 //                    Update_Image_Fast();
                     Update_Image_volley();
                 } else {
-                    Toast.makeText(ImageUpload.this, "Please select image", Toast.LENGTH_LONG).show();
+                    /**************** Start Animation ****************/
+                    YoYo.with(Techniques.Tada)
+                            .duration(700)
+                            .playOn(Rl_upload_btn);
+                    /**************** End Animation ****************/
+                    Toast.makeText(ImageUpload.this, "Please select image", Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -334,7 +341,7 @@ public class ImageUpload extends AppCompatActivity {
                                 Str_Get_Control_Message = jobjControl.getString("Message");
                                 Log.e("Str_Get_Control_Message :", "" + Str_Get_Control_Message);
 
-                                JSONObject jobjData = jobjresponse.getJSONObject("Data");
+//                                JSONObject jobjData = jobjresponse.getJSONObject("Data");
 //                                Str_MerchantID = jobjData.getString("MerchantId");
 //                                Log.e("Str_MerchantID :", "" + Str_MerchantID);
                                 Log.e("SIgnup :", "GOOD");
@@ -346,7 +353,7 @@ public class ImageUpload extends AppCompatActivity {
                                 Appconstant.editor.commit();
                                 Toast.makeText(ImageUpload.this, "Image Upload Completed", Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(SignupActivity.this, "Your ID is :" + Str_MerchantID.toString(), Toast.LENGTH_SHORT).show();
-                                Intent Gologincreen = new Intent(getApplicationContext(), DashBoard.class);
+                                Intent Gologincreen = new Intent(ImageUpload.this, WebViewActivity.class);
                                 startActivity(Gologincreen);
                                 finish();
 
@@ -382,4 +389,6 @@ public class ImageUpload extends AppCompatActivity {
         super.onBackPressed();
         finish();
     }
+
+
 }

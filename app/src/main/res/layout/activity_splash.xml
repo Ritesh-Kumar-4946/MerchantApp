@@ -2,21 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_color">
+    android:background="@drawable/ic_splash_bg">
 
 
-    <!--<ImageView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:background="@drawable/ic_bg_six" />-->
-
-
-    <TextView
+    <com.merchantapp.ritesh.CustomFonts
+        android:id="@+id/tv_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="@string/app_name"
-        android:textColor="@color/bg_app"
-        android:textSize="50sp" />
+        android:padding="20dp"
+        android:text="Go Chela"
+        android:textColor="@color/login_email"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
 
 </RelativeLayout>

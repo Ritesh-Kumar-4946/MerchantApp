@@ -225,7 +225,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Appconstant.editor.commit();
 
 
-                                Intent Screen = new Intent(getApplicationContext(), VarifyMobileActivity.class);
+                                Intent Screen = new Intent(getApplicationContext(), WebViewActivity.class);
                                 startActivity(Screen);
                                 finish();
                             } else {

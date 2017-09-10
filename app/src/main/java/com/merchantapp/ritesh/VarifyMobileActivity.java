@@ -191,6 +191,7 @@ public class VarifyMobileActivity extends AppCompatActivity {
             pDialog.show();
     }
 
+
     private void hideDialog() {
         if (pDialog.isShowing())
             pDialog.dismiss();

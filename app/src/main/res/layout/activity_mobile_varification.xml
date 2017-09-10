@@ -2,17 +2,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_color">
+    android:background="@drawable/ic_splash_bg"
+    android:clickable="true"
+    android:focusableInTouchMode="true">
 
-    <TextView
+
+    <com.merchantapp.ritesh.CustomFonts
         android:id="@+id/tv_mobile_varification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50sp"
-        android:text="Mobile Varification"
-        android:textColor="@color/bg_app"
-        android:textSize="30sp" />
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="Go Chela"
+        android:textColor="@color/login_email"
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
 
     <ScrollView
@@ -34,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:padding="10dp"
+                android:text="Mobile No. Varification"
                 android:textColor="@color/bg_app"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -51,12 +57,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:digits="0123456789"
-                    android:hint="OTP"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
                     android:gravity="center"
+                    android:hint="OTP"
                     android:maxLength="8"
-                    android:textColor="@color/bg_app" />
+                    android:textColor="@color/bg_app"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
 
             </android.support.design.widget.TextInputLayout>
 

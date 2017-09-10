@@ -134,13 +134,16 @@ public class SignupActivity extends AppCompatActivity {
             Str_Get_Persone_Address = "",
             Str_Get_Persone_Password = "",
             Str_Get_Persone_Pincode = "",
+            Str_Get_Latitude = "",
+            Str_Get_longitude = "",
             Str_Get_StateName = "";
 
+    GPSTracker gps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_signup_new);
         ButterKnife.bind(this);
 
         AndroidNetworking.initialize(getApplicationContext());
@@ -149,6 +152,27 @@ public class SignupActivity extends AppCompatActivity {
         // Progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
+
+        // create class object
+        gps = new GPSTracker(SignupActivity.this);
+        // check if GPS enabled
+        if (gps.canGetLocation()) {
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude();
+            // \n is for new line
+            Str_Get_Latitude = String.valueOf(latitude);
+            Str_Get_longitude = String.valueOf(longitude);
+            Log.e("Str_Get_Latitude :", "" + Str_Get_Latitude + "\n" + "\n" + "Str_Get_longitude :" + "" + Str_Get_longitude);
+
+//            Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+        } else {
+            // can't get location
+            // GPS or Network is not enabled
+            // Ask user to enable GPS/network in settings
+            gps.showSettingsAlert();
+        }
+
+
         Get_Store_List_Fast();
         Get_Store_Category_List_Fast();
         Get_State_List_Fast();
@@ -703,6 +727,8 @@ public class SignupActivity extends AppCompatActivity {
                 + "Str_Get_Cityid :" + "" + Str_Get_Cityid + "\n"
                 + "CategoryID :" + "" + Str_Get_Mtsn_CategoryID + "\n"
                 + "StoreCategory ID :" + "" + Str_Get_Mtsn_StoreCategoryID + "\n"
+                + "Str_Get_Latitude :" + "" + Str_Get_Latitude + "\n"
+                + "Str_Get_longitude :" + "" + Str_Get_longitude + "\n"
                 + "Str_Get_Persone_Pincode :" + "" + Str_Get_Persone_Pincode + "\n");
 
 
@@ -791,8 +817,8 @@ public class SignupActivity extends AppCompatActivity {
                 params.put("Address", Str_Get_Persone_Address);
                 params.put("CityId", Str_Get_Cityid);
                 params.put("Pincode", Str_Get_Persone_Pincode);
-                params.put("Longitude", "2228.00");
-                params.put("Latitude", "2222.00");
+                params.put("Longitude", Str_Get_longitude);
+                params.put("Latitude", Str_Get_Latitude);
                 params.put("DeviceId", Deviceid);
                 params.put("Category", Str_Get_Mtsn_CategoryID);
                 params.put("StoreCategory", Str_Get_Mtsn_StoreCategoryID);

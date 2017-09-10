@@ -45,7 +45,7 @@ public class SplashActivity extends AppCompatActivity {
                         && !Appconstant.str_login_test.toString().trim().equals("")) {
                     Log.e("Login detail found :", " Now Check Business Create Status");
 
-                    Intent Screen = new Intent(getApplicationContext(), ImageUpload.class);
+                    Intent Screen = new Intent(SplashActivity.this, WebViewActivity.class);
                     startActivity(Screen);
                     finish();
 
@@ -61,11 +61,6 @@ public class SplashActivity extends AppCompatActivity {
                     finish();
 
                 }
-
-
-                Intent i = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(i);
-                finish();
             }
         }, 2000);
 

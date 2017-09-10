@@ -3,29 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_color">
-
-    <!--<ImageView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:background="@drawable/ic_bg_six" />-->
+    android:background="@drawable/ic_splash_bg">
 
 
-    <TextView
+    <com.merchantapp.ritesh.CustomFonts
         android:id="@+id/iv_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
+        android:gravity="center"
         android:text="Go Chela"
-        android:textColor="@color/bg_app"
-        android:textSize="50sp" />
+        android:textColor="@color/login_email"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_upload_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="Please Upload your Aadhaar Card below!"
+        android:textColor="@color/login_email"
+        android:textSize="15sp" />
+
 
     <android.support.percent.PercentRelativeLayout
         android:id="@+id/rl_mail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/iv_logo"
+        android:layout_below="@id/tv_upload_text"
         android:layout_margin="10dp">
 
 
@@ -35,6 +44,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
             android:adjustViewBounds="true"
+            android:background="@drawable/ic_document"
             android:scaleType="fitCenter"
             app:layout_heightPercent="60%"
             app:layout_widthPercent="100%" />
